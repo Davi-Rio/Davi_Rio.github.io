@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #0d1117;
+  color: #e6edf3;
+  line-height: 1.6;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1f6feb, #238636);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.buttons a {
+  text-decoration: none;
+  color: #fff;
+  background: #0d1117;
+  padding: 12px 20px;
+  margin: 0 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.buttons a:hover {
+  background: #161b22;
+}
+
+.section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #58a6ff;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.tech-list li {
+  background: #161b22;
+  padding: 10px 15px;
+  margin: 8px;
+  border-radius: 6px;
+}
+
+.project {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.project h4 {
+  margin-bottom: 8px;
+}
+
+.contact {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
