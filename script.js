@@ -540,3 +540,59 @@ function stopAllArchitectureLoops() {
   hideArchTooltip();
   hideBackendTooltip();
 }
+
+const timelineCards = document.querySelectorAll('.timeline-card');
+const nextButtons = document.querySelectorAll('.timeline-next');
+const prevButtons = document.querySelectorAll('.timeline-prev');
+
+let currentTimelineIndex = 0;
+let autoPlayInterval = null;
+const AUTO_PLAY_DELAY = 10000; 
+
+function showTimelineCard(index) {
+  timelineCards.forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+  });
+}
+
+function nextTimelineCard() {
+  currentTimelineIndex =
+    (currentTimelineIndex + 1) % timelineCards.length;
+  showTimelineCard(currentTimelineIndex);
+}
+
+function prevTimelineCard() {
+  currentTimelineIndex =
+    (currentTimelineIndex - 1 + timelineCards.length) %
+    timelineCards.length;
+  showTimelineCard(currentTimelineIndex);
+}
+
+function startAutoPlay() {
+  stopAutoPlay();
+  autoPlayInterval = setInterval(nextTimelineCard, AUTO_PLAY_DELAY);
+}
+
+function stopAutoPlay() {
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = null;
+  }
+}
+
+nextButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    nextTimelineCard();
+    startAutoPlay();
+  });
+});
+
+prevButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    prevTimelineCard();
+    startAutoPlay(); 
+  });
+});
+
+showTimelineCard(currentTimelineIndex);
+startAutoPlay();
