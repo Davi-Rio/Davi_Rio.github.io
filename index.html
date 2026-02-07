@@ -107,38 +107,95 @@
 
   <footer>© 2026 — Davi Rio</footer>
 
-  <div class="project-modal-overlay" id="projectModal">
-    <div class="project-modal">
+    <div class="project-modal-overlay" id="projectModal">
+        <div class="project-modal">
 
-      <button class="modal-close" aria-label="Fechar">&times;</button>
-      <h3 class="modal-title"></h3>
+            <button class="modal-close" aria-label="Fechar">&times;</button>
+            <h3 class="modal-title"></h3>
 
-      <div class="modal-image">
-        <img src="" alt="Arquitetura do projeto">
-      </div>
+            <div class="modal-image">
+            <img src="" alt="Arquitetura do projeto">
+            </div>
 
-      <p class="modal-description"></p>
+       <div class="architecture-diagram" id="architectureDiagram" style="display:none;">
 
-      <div class="mini-dashboard" style="display:none;">
-        <div class="dashboard-kpis">
-          <div class="kpi"><span>Vendas: </span><strong id="kpiSales">R$ 0</strong></div>
-          <div class="kpi"><span>Usuários: </span><strong id="kpiUsers">0</strong></div>
-          <div class="kpi"><span>Crescimento: </span><strong id="kpiGrowth">0%</strong></div>
+            <div class="architecture-grid">
+
+                <div class="arch-node frontend" data-node="frontend">
+                    <i class="fab fa-angular"></i>
+                    <span>Frontend Web<br><small>Angular / TypeScript</small></span>
+                </div>
+
+                <div class="arch-node api" data-node="api">
+                    <i class="fab fa-node-js"></i>
+                    <span>APIs<br><small>Node.js / NestJS</small></span>
+                </div>
+
+                <div class="arch-node mqtt" data-node="mqtt">
+                    <i class="fas fa-wifi"></i>
+                    <span>MQTT<br><small>Mensageria</small></span>
+                </div>
+
+                <div class="arch-node db" data-node="db">
+                    <i class="fas fa-database"></i>
+                    <span>PostgreSQL<br><small>Banco de Dados</small></span>
+                </div>
+
+                <div class="arch-node embedded" data-node="embedded">
+                    <i class="fas fa-microchip"></i>
+                    <span>Equipamentos<br><small>Embarcados</small></span>
+                </div>
+
+            </div>
+
+            <svg class="arch-lines" viewBox="0 0 600 360" preserveAspectRatio="none">
+
+                <path d="M145 165 L225 165"
+                    class="flow blue"
+                    data-from="frontend"
+                    data-to="api" />
+
+                <path d="M300 210 L300 255"
+                    class="flow green"
+                    data-from="api"
+                    data-to="db" />
+
+                <path d="M375 165 L455 165"
+                    class="flow yellow"
+                    data-from="api"
+                    data-to="mqtt" />
+
+                <path d="M530 210 L530 255"
+                    class="flow yellow"
+                    data-from="mqtt"
+                    data-to="embedded" />
+
+            </svg>
+            </div>
+            
+            <p class="modal-description"></p>
+
+            <div class="mini-dashboard" style="display:none;">
+                <div class="dashboard-kpis">
+                    <div class="kpi"><span>Vendas: </span><strong id="kpiSales">R$ 0</strong></div>
+                    <div class="kpi"><span>Usuários: </span><strong id="kpiUsers">0</strong></div>
+                    <div class="kpi"><span>Crescimento: </span><strong id="kpiGrowth">0%</strong></div>
+                </div>
+
+                <canvas id="dashboardChart" width="640" height="220"></canvas>
+
+                <div class="dashboard-filters">
+                    <button data-period="7">7 dias</button>
+                    <button data-period="30" class="active">30 dias</button>
+                    <button data-period="90">90 dias</button>
+                </div>
+            </div>
+
+            <div class="chart-tooltip" id="chartTooltip"></div>
+
         </div>
-
-        <canvas id="dashboardChart" width="640" height="220"></canvas>
-
-        <div class="dashboard-filters">
-          <button data-period="7">7 dias</button>
-          <button data-period="30" class="active">30 dias</button>
-          <button data-period="90">90 dias</button>
-        </div>
-      </div>
-
-      <div class="chart-tooltip" id="chartTooltip"></div>
-
     </div>
-  </div>
+
 
   <script src="script.js"></script>
 </body>

@@ -535,3 +535,127 @@ section h3 + .tech-grid .tech-card i {
 .project-modal {
   position: relative;
 }
+
+.architecture-diagram {
+  position: relative;
+  width: 600px;
+  height: 360px;
+  margin: 20px auto 0;
+  transform: translateY(-60px);
+}
+
+
+.arch-node {
+  position: absolute;
+  width: 140px;
+  padding: 14px;
+  background: rgba(88,166,255,0.08);
+  border-radius: 14px;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.arch-node i {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.arch-node span small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+
+.arch-node.frontend { left: 0px;   top: 120px; }
+.arch-node.api      { left: 230px; top: 120px; }
+.arch-node.db       { left: 230px; top: 260px; }
+.arch-node.mqtt     { left: 460px; top: 120px; }
+.arch-node.embedded { left: 460px; top: 260px; }
+
+.arch-lines {
+  position: absolute;
+  inset: 0;
+  width: 600px;    
+  height: 360px;
+  pointer-events: none;
+}
+
+.flow {
+  fill: none;
+  stroke-width: 3;
+  stroke-dasharray: 6 6;
+  animation: flow 1.8s linear infinite;
+}
+
+.flow.blue   { stroke: #58a6ff; }
+.flow.green  { stroke: #3fb950; }
+.flow.yellow { stroke: #d29922; }
+
+@keyframes flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -24; }
+}
+
+.arch-node.active-node {
+  box-shadow: 0 0 0 2px #58a6ff,
+              0 0 25px rgba(88,166,255,0.6);
+  transform: scale(1.05);
+}
+
+.flow {
+  opacity: 0.2;
+}
+
+.flow.active-flow {
+  opacity: 1;
+  stroke-width: 4;
+  animation: pulseFlow 1.2s ease-in-out infinite;
+}
+
+@keyframes pulseFlow {
+  0%   { stroke-dashoffset: 0; }
+  50%  { stroke-dashoffset: -20; }
+  100% { stroke-dashoffset: -40; }
+}
+
+.arch-tooltip {
+  position: absolute;
+  padding: 10px 14px;
+  background: rgba(20, 25, 40, 0.95);
+  border: 1px solid rgba(88,166,255,0.4);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: #fff;
+  max-width: 220px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 20;
+}
+
+.arch-node {
+  transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+}
+
+.arch-node.active-node {
+  transform: scale(1.08);
+  box-shadow: 0 0 28px rgba(88,166,255,0.6);
+  opacity: 1;
+}
+
+.arch-node:not(.active-node) {
+  opacity: 0.4;
+}
+
+.flow {
+  opacity: 0.15;
+  transition: opacity .3s ease, stroke-width .3s ease;
+}
+
+.flow.active-flow {
+  opacity: 1;
+  stroke-width: 4;
+}

@@ -10,6 +10,7 @@ const observer = new IntersectionObserver(
   },
   { threshold: 0.15 }
 );
+const architectureDiagram = document.getElementById('architectureDiagram');
 
 reveals.forEach(el => observer.observe(el));
 
@@ -89,17 +90,31 @@ document.querySelectorAll('.project-card').forEach(card => {
     const key = card.dataset.project;
     const data = projectData[key];
     if (!data) return;
-
     modalTitle.textContent = data.title;
     modalDescription.textContent = data.description;
+    modalImage.style.display = 'none';
+    miniDashboard.style.display = 'none';
+    const architectureDiagram = document.getElementById('architectureDiagram');
+    
+    if (architectureDiagram) {
+      architectureDiagram.style.display = 'none';
+    }
 
-    if (key === 'dashboard') {
-      modalImage.style.display = 'none';
+    if (key === 'industrial') {
+      if (architectureDiagram) {
+        architectureDiagram.style.display = 'block';
+        architectureLoopRunning = false;
+        setTimeout(() => {
+          startArchitectureLoop();
+        }, 200);
+      }
+    }
+    else if (key === 'dashboard') {
       miniDashboard.style.display = 'block';
       updateDashboard(30);
-    } else {
+    }
+    else {
       modalImage.style.display = 'block';
-      miniDashboard.style.display = 'none';
       modalImage.src = data.image;
     }
 
@@ -109,13 +124,19 @@ document.querySelectorAll('.project-card').forEach(card => {
 
 modalClose.addEventListener('click', () => {
   modalOverlay.classList.remove('active');
+  architectureLoopRunning = false;
+  clearArchitectureState();
 });
+
 
 modalOverlay.addEventListener('click', e => {
   if (e.target === modalOverlay) {
     modalOverlay.classList.remove('active');
+    architectureLoopRunning = false;
+    clearArchitectureState();
   }
 });
+
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -312,3 +333,134 @@ document.querySelectorAll('.dashboard-filters button').forEach(btn => {
     updateDashboard(btn.dataset.period);
   });
 });
+
+const architectureStages = [
+  [ { from: 'frontend', to: 'api' } ],
+
+  [
+    { from: 'api', to: 'db' },
+    { from: 'api', to: 'mqtt' }
+  ],
+
+  [ { from: 'mqtt', to: 'embedded' } ]
+];
+
+
+function clearArchitectureState() {
+  document
+    .querySelectorAll('.arch-node')
+    .forEach(n => n.classList.remove('active-node'));
+
+  document
+    .querySelectorAll('.flow')
+    .forEach(f => f.classList.remove('active-flow'));
+}
+
+function pulseLink(from, to) {
+  const fromNode = document.querySelector(`[data-node="${from}"]`);
+  const toNode   = document.querySelector(`[data-node="${to}"]`);
+
+  if (!fromNode || !toNode) return;
+
+  fromNode.classList.add('active-node');
+  toNode.classList.add('active-node');
+
+  document.querySelectorAll('.flow').forEach(flow => {
+    if (
+      flow.dataset.from === from &&
+      flow.dataset.to === to
+    ) {
+      flow.classList.add('active-flow');
+    }
+  });
+}
+
+async function runArchitectureOnce() {
+  clearArchitectureState();
+
+  for (const stage of architectureStages) {
+    clearArchitectureState();
+
+    stage.forEach(link => {
+      pulseLink(link.from, link.to);
+    });
+
+    await new Promise(res => setTimeout(res, 900));
+  }
+
+  clearArchitectureState();
+}
+
+let architectureLoopRunning = false;
+
+async function startArchitectureLoop() {
+  if (architectureLoopRunning) return;
+  architectureLoopRunning = true;
+
+  while (architectureLoopRunning) {
+    await runArchitectureOnce();
+    await new Promise(res => setTimeout(res, 5000));
+  }
+}
+
+document.querySelectorAll('.arch-node').forEach(node => {
+  node.addEventListener('click', () => {
+    architectureLoopRunning = false; 
+    setTimeout(() => {
+      startArchitectureLoop();    
+    }, 100);
+  });
+});
+
+const archTooltip = document.getElementById('archTooltip');
+const ARCH_STEP_DURATION = 5500;
+const ARCH_LOOP_DELAY    = 5000;
+
+const archMessages = {
+  frontend: 'Usuário interage com a aplicação Angular.',
+  api: 'API processa a requisição, valida e autentica.',
+  db: 'Dados são persistidos no PostgreSQL.',
+  mqtt: 'Mensagens são publicadas via MQTT.',
+  embedded: 'Equipamentos embarcados executam ações.'
+};
+
+function showArchTooltip(nodeKey) {
+  const node = document.querySelector(`[data-node="${nodeKey}"]`);
+  if (!node) return;
+
+  const rect = node.getBoundingClientRect();
+  const parentRect = architectureDiagram.getBoundingClientRect();
+
+  archTooltip.innerHTML = `<strong>${nodeKey.toUpperCase()}</strong><br>${archMessages[nodeKey]}`;
+  archTooltip.style.left = `${rect.left - parentRect.left + rect.width / 2}px`;
+  archTooltip.style.top  = `${rect.top - parentRect.top - 12}px`;
+  archTooltip.style.opacity = '1';
+  archTooltip.style.transform = 'translateY(0)';
+}
+
+function hideArchTooltip() {
+  archTooltip.style.opacity = '0';
+}
+
+async function playArchitectureFlowLoop() {
+  if (architectureLoopRunning) return;
+  architectureLoopRunning = true;
+
+  while (architectureLoopRunning) {
+    for (const stage of architectureStages) {
+      clearArchitectureState();
+
+      stage.forEach(link => {
+        pulseLink(link.from, link.to);
+        showArchTooltip(link.from);
+      });
+
+      await new Promise(r => setTimeout(r, ARCH_STEP_DURATION));
+    }
+
+    hideArchTooltip();
+    clearArchitectureState();
+
+    await new Promise(r => setTimeout(r, ARCH_LOOP_DELAY));
+  }
+}
