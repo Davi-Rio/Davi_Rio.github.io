@@ -1,75 +1,230 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davi Rio | Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 </head>
 
 <body>
 
   <section class="hero">
+
     <div class="hero-text">
-      <p class="hello">Olá</p>
-      <h1>Eu Sou <span>Davi Rio</span></h1>
-      <h2>Estudante De Engenharia De Controle e Automação & Desenvolvedor Full Stack</h2>
+      <span class="hero-badge">
+        <i class="fas fa-code"></i>
+        Desenvolvedor & Estudante De Engenharia Automação
+      </span>
+
+      <h1>Davi <span>Rio</span></h1>
+
+      <p class="hero-subtitle">
+        Estudante de Engenharia de Controle e Automação<br />
+        <strong>Full Stack · Cloud · Sistemas Integrados</strong>
+      </p>
 
       <div class="hero-buttons">
-        <a href="https://github.com/Davi-Rio" target="_blank" class="btn primary">GitHub</a>
-        <a href="https://www.linkedin.com/in/davi-pereira-rio-bab6a1205/" target="_blank" class="btn secondary">LinkedIn</a>
+        <a
+          href="https://github.com/Davi-Rio"
+          target="_blank"
+          class="btn primary"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/davi-pereira-rio-bab6a1205/"
+          target="_blank"
+          class="btn secondary"
+        >
+          LinkedIn
+        </a>
       </div>
     </div>
 
     <div class="hero-visual">
-      <img src="Computador.png" alt="Ilustração de desenvolvimento de software" class="hero-illustration"/>
+      <img
+        src="Computador.png"
+        alt="Ilustração de desenvolvimento de software"
+        class="hero-illustration"
+      />
     </div>
+
   </section>
 
   <section class="section reveal about">
     <h3>Sobre mim</h3>
-    <p class="about-text">
-      Sou estudante de Engenharia de Controle e Automação com forte atuação em
-      <strong>desenvolvimento Full Stack</strong>, integração de sistemas,
-      <strong>cloud computing</strong> e automação industrial.
-    </p>
 
-    <div class="stats">
-      <div class="stat-card"><strong>10+</strong><span>Projetos Desenvolvidos</span></div>
-      <div class="stat-card"><strong>3+</strong><span>Anos De Experiência</span></div>
-      <div class="stat-card"><strong>100%</strong><span>Foco Em Desenvolver</span></div>
+    <div class="about-layout">
+
+      <div class="about-card about-card-main">
+        <p class="about-intro">
+          Sou estudante de Engenharia de Controle e Automação e desenvolvedor com
+          foco em construir sistemas que funcionam de ponta a ponta.
+        </p>
+
+        <p class="about-text">
+          Atuo no desenvolvimento de soluções completas, envolvendo
+          <strong>frontend</strong>, <strong>backend</strong> e
+          <strong>cloud computing</strong>, além da integração com
+          <strong>equipamentos embarcados</strong> e automação industrial.
+        </p>
+
+        <p class="about-text">
+          Tenho interesse em arquitetura de software, integração de sistemas e
+          escalabilidade, sempre buscando escrever código claro, organizado e
+          fácil de evoluir.
+        </p>
+      </div>
+
+    <div class="about-highlights about-highlights-bottom">
+
+      <div class="highlight-card">
+        <i class="fas fa-desktop"></i>
+        <strong>Frontend</strong>
+        <span>UI · UX · Performance</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-server"></i>
+        <strong>Backend</strong>
+        <span>APIs · Regras · Segurança</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-layer-group"></i>
+        <strong>Full Stack</strong>
+        <span>Frontend · Backend · Cloud</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-plug"></i>
+        <strong>Integração</strong>
+        <span>Web · APIs · Embarcados</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-diagram-project"></i>
+        <strong>Arquitetura</strong>
+        <span>Sistemas escaláveis</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-check-circle"></i>
+        <strong>Qualidade</strong>
+        <span>Código limpo e confiável</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-comments"></i>
+        <strong>Comunicação</strong>
+        <span>Clareza técnica</span>
+      </div>
+
+      <div class="highlight-card">
+        <i class="fas fa-brain"></i>
+        <strong>Aprendizado</strong>
+        <span>Evolução constante</span>
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
   <section class="section reveal">
     <h3>Tecnologias</h3>
+
     <div class="tech-grid">
-      <div class="tech-card"><i class="fab fa-angular"></i><span>Angular</span></div>
-      <div class="tech-card"><i class="fab fa-node-js"></i><span>Node.js / NestJS</span></div>
-      <div class="tech-card"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
-      <div class="tech-card"><i class="fab fa-google"></i><span>Google Cloud</span></div>
-      <div class="tech-card"><i class="fas fa-microchip"></i><span>MQTT / Embarcados</span></div>
-      <div class="tech-card"><i class="fab fa-docker"></i><span>Git / Docker</span></div>
+      <div class="tech-card">
+        <i class="fab fa-angular"></i>
+        <span>Angular</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-node-js"></i>
+        <span>Node.js / NestJS</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fas fa-database"></i>
+        <span>PostgreSQL</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-google"></i>
+        <span>Google Cloud</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fas fa-microchip"></i>
+        <span>MQTT / Embarcados</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-docker"></i>
+        <span>Git / Docker</span>
+      </div>
     </div>
   </section>
 
   <section class="section reveal">
     <h3>Linguagens</h3>
+
     <div class="tech-grid">
-      <div class="tech-card"><i class="fab fa-java"></i><span>Java</span></div>
-      <div class="tech-card"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
-      <div class="tech-card ts"><i class="fab fa-js"></i><span>TypeScript</span></div>
-      <div class="tech-card"><i class="fas fa-code"></i><span>C</span></div>
-      <div class="tech-card"><i class="fas fa-code"></i><span>C++</span></div>
-      <div class="tech-card"><i class="fab fa-python"></i><span>Python</span></div>
-      <div class="tech-card"><i class="fab fa-html5"></i><span>HTML</span></div>
-      <div class="tech-card"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+      <div class="tech-card">
+        <i class="fab fa-java"></i>
+        <span>Java</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-js-square"></i>
+        <span>JavaScript</span>
+      </div>
+
+      <div class="tech-card ts">
+        <i class="fab fa-js"></i>
+        <span>TypeScript</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fas fa-code"></i>
+        <span>C</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fas fa-code"></i>
+        <span>C++</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-python"></i>
+        <span>Python</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-html5"></i>
+        <span>HTML</span>
+      </div>
+
+      <div class="tech-card">
+        <i class="fab fa-css3-alt"></i>
+        <span>CSS</span>
+      </div>
     </div>
   </section>
 
@@ -77,126 +232,304 @@
     <h3>Experiência & Soluções Desenvolvidas</h3>
 
     <div class="projects">
+
       <div class="project-card" data-project="industrial">
-        <div class="project-icon"><i class="fas fa-industry"></i></div>
+        <div class="project-icon">
+          <i class="fas fa-industry"></i>
+        </div>
+
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+
         <h4>Plataforma de Automação Industrial</h4>
+
         <p>Sistema web integrado a equipamentos embarcados.</p>
-        <div class="project-tags"><span>Angular</span><span>Node.js</span><span>MQTT</span></div>
+
+        <div class="project-tags">
+          <span>Angular</span>
+          <span>Node.js</span>
+          <span>MQTT</span>
+        </div>
       </div>
 
       <div class="project-card" data-project="cloud">
-        <div class="project-icon"><i class="fas fa-cloud"></i></div>
+        <div class="project-icon">
+          <i class="fas fa-cloud"></i>
+        </div>
+
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+
         <h4>Backend de APIs em Cloud</h4>
+
         <p>APIs escaláveis com autenticação e logs.</p>
-        <div class="project-tags"><span>NestJS</span><span>PostgreSQL</span><span>Cloud</span></div>
+
+        <div class="project-tags">
+          <span>NestJS</span>
+          <span>PostgreSQL</span>
+          <span>Cloud</span>
+        </div>
       </div>
 
       <div class="project-card" data-project="dashboard">
-        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="project-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+
         <h4>Dashboards Web</h4>
+
         <p>Visualização de dados e relatórios analíticos.</p>
-        <div class="project-tags"><span>Frontend</span><span>Charts</span><span>UX</span></div>
+
+        <div class="project-tags">
+          <span>Frontend</span>
+          <span>Charts</span>
+          <span>UX</span>
+        </div>
       </div>
+
     </div>
   </section>
 
   <section class="section contact reveal">
     <h3>Contato</h3>
-    <p>Email: <strong>Davi.pereira.rio@gmail.com</strong></p>
+
+    <p>
+      Email:
+      <strong>Davi.pereira.rio@gmail.com</strong>
+    </p>
+
+    <p>
+      Celular:
+      <strong>(81) 97903-2929</strong>
+    </p>
   </section>
 
   <footer>© 2026 — Davi Rio</footer>
 
-    <div class="project-modal-overlay" id="projectModal">
-        <div class="project-modal">
+  <div class="project-modal-overlay" id="projectModal">
+    <div class="project-modal">
 
-            <button class="modal-close" aria-label="Fechar">&times;</button>
-            <h3 class="modal-title"></h3>
+      <button class="modal-close" aria-label="Fechar">&times;</button>
 
-            <div class="modal-image">
-            <img src="" alt="Arquitetura do projeto">
-            </div>
+      <h3 class="modal-title"></h3>
 
-       <div class="architecture-diagram" id="architectureDiagram" style="display:none;">
+      <div class="modal-image">
+        <img src="" alt="Arquitetura do projeto">
+      </div>
 
-            <div class="architecture-grid">
+      <div
+        class="architecture-diagram"
+        id="architectureDiagram"
+        style="display:none;"
+      >
+        <div class="architecture-grid">
 
-                <div class="arch-node frontend" data-node="frontend">
-                    <i class="fab fa-angular"></i>
-                    <span>Frontend Web<br><small>Angular / TypeScript</small></span>
-                </div>
+          <div class="arch-node frontend" data-node="frontend">
+            <i class="fab fa-angular"></i>
+            <span>
+              Frontend Web<br>
+              <small>Angular / TypeScript</small>
+            </span>
+          </div>
 
-                <div class="arch-node api" data-node="api">
-                    <i class="fab fa-node-js"></i>
-                    <span>APIs<br><small>Node.js / NestJS</small></span>
-                </div>
+          <div class="arch-node api" data-node="api">
+            <i class="fab fa-node-js"></i>
+            <span>
+              APIs<br>
+              <small>Node.js / NestJS</small>
+            </span>
+          </div>
 
-                <div class="arch-node mqtt" data-node="mqtt">
-                    <i class="fas fa-wifi"></i>
-                    <span>MQTT<br><small>Mensageria</small></span>
-                </div>
+          <div class="arch-node mqtt" data-node="mqtt">
+            <i class="fas fa-wifi"></i>
+            <span>
+              MQTT<br>
+              <small>Mensageria</small>
+            </span>
+          </div>
 
-                <div class="arch-node db" data-node="db">
-                    <i class="fas fa-database"></i>
-                    <span>PostgreSQL<br><small>Banco de Dados</small></span>
-                </div>
+          <div class="arch-node db" data-node="db">
+            <i class="fas fa-database"></i>
+            <span>
+              PostgreSQL<br>
+              <small>Banco de Dados</small>
+            </span>
+          </div>
 
-                <div class="arch-node embedded" data-node="embedded">
-                    <i class="fas fa-microchip"></i>
-                    <span>Equipamentos<br><small>Embarcados</small></span>
-                </div>
-
-            </div>
-
-            <svg class="arch-lines" viewBox="0 0 600 360" preserveAspectRatio="none">
-
-                <path d="M145 165 L225 165"
-                    class="flow blue"
-                    data-from="frontend"
-                    data-to="api" />
-
-                <path d="M300 210 L300 255"
-                    class="flow green"
-                    data-from="api"
-                    data-to="db" />
-
-                <path d="M375 165 L455 165"
-                    class="flow yellow"
-                    data-from="api"
-                    data-to="mqtt" />
-
-                <path d="M530 210 L530 255"
-                    class="flow yellow"
-                    data-from="mqtt"
-                    data-to="embedded" />
-
-            </svg>
-            </div>
-            
-            <p class="modal-description"></p>
-
-            <div class="mini-dashboard" style="display:none;">
-                <div class="dashboard-kpis">
-                    <div class="kpi"><span>Vendas: </span><strong id="kpiSales">R$ 0</strong></div>
-                    <div class="kpi"><span>Usuários: </span><strong id="kpiUsers">0</strong></div>
-                    <div class="kpi"><span>Crescimento: </span><strong id="kpiGrowth">0%</strong></div>
-                </div>
-
-                <canvas id="dashboardChart" width="640" height="220"></canvas>
-
-                <div class="dashboard-filters">
-                    <button data-period="7">7 dias</button>
-                    <button data-period="30" class="active">30 dias</button>
-                    <button data-period="90">90 dias</button>
-                </div>
-            </div>
-
-            <div class="chart-tooltip" id="chartTooltip"></div>
+          <div class="arch-node embedded" data-node="embedded">
+            <i class="fas fa-microchip"></i>
+            <span>
+              Equipamentos<br>
+              <small>Embarcados</small>
+            </span>
+          </div>
 
         </div>
-    </div>
 
+        <svg
+          class="arch-lines"
+          viewBox="0 0 600 360"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M145 165 L225 165"
+            class="flow blue"
+            data-from="frontend"
+            data-to="api"
+          />
+
+          <path
+            d="M300 210 L300 255"
+            class="flow green"
+            data-from="api"
+            data-to="db"
+          />
+
+          <path
+            d="M375 165 L455 165"
+            class="flow yellow"
+            data-from="api"
+            data-to="mqtt"
+          />
+
+          <path
+            d="M530 210 L530 255"
+            class="flow yellow"
+            data-from="mqtt"
+            data-to="embedded"
+          />
+        </svg>
+
+        <div class="arch-tooltip" id="archTooltip"></div>
+      </div>
+
+      <div
+        class="architecture-diagram backend-diagram"
+        id="backendDiagram"
+        style="display:none;"
+      >
+        <div class="architecture-grid">
+
+          <div class="arch-node auth" data-node="auth">
+            <i class="fas fa-shield-alt"></i>
+            <span>
+              Autenticação<br>
+              <small>JWT / OAuth2</small>
+            </span>
+          </div>
+
+          <div class="arch-node api" data-node="api">
+            <i class="fab fa-node-js"></i>
+            <span>
+              APIs Escaláveis<br>
+              <small>NestJS / Node.js</small>
+            </span>
+          </div>
+
+          <div class="arch-node deploy" data-node="deploy">
+            <i class="fab fa-docker"></i>
+            <span>
+              Deploy na Cloud<br>
+              <small>Docker / Google Cloud</small>
+            </span>
+          </div>
+
+          <div class="arch-node db" data-node="db">
+            <i class="fas fa-database"></i>
+            <span>
+              Banco de Dados<br>
+              <small>PostgreSQL</small>
+            </span>
+          </div>
+
+          <div class="arch-node logs" data-node="logs">
+            <i class="fas fa-chart-line"></i>
+            <span>
+              Logs & Monitoramento<br>
+              <small>Winston / Elastic</small>
+            </span>
+          </div>
+
+        </div>
+
+        <div id="backendArchTooltip" class="arch-tooltip backend-tooltip"></div>
+
+        <svg
+          class="arch-lines"
+          viewBox="0 0 720 380"
+          preserveAspectRatio="none"
+        >
+          <path
+            class="flow blue"
+            data-from="auth"
+            data-to="api"
+            d="M175 160 L270 160"
+          />
+
+          <path
+            class="flow green"
+            data-from="api"
+            data-to="db"
+            d="M360 270 L360 230"
+          />
+
+          <path
+            class="flow yellow"
+            data-from="api"
+            data-to="deploy"
+            d="M450 160 L545 160"
+          />
+
+          <path
+            class="flow purple"
+            data-from="db"
+            data-to="logs"
+            d="M450 330 L545 330"
+          />
+        </svg>
+      </div>
+
+      <p class="modal-description"></p>
+
+      <div class="mini-dashboard" style="display:none;">
+        <div class="dashboard-kpis">
+          <div class="kpi">
+            <span>Vendas:</span>
+            <strong id="kpiSales">R$ 0</strong>
+          </div>
+
+          <div class="kpi">
+            <span>Usuários:</span>
+            <strong id="kpiUsers">0</strong>
+          </div>
+
+          <div class="kpi">
+            <span>Crescimento:</span>
+            <strong id="kpiGrowth">0%</strong>
+          </div>
+        </div>
+
+        <canvas id="dashboardChart" width="640" height="220"></canvas>
+
+        <div class="dashboard-filters">
+          <button data-period="7">7 dias</button>
+          <button data-period="30" class="active">30 dias</button>
+          <button data-period="90">90 dias</button>
+        </div>
+      </div>
+
+      <div class="chart-tooltip" id="chartTooltip"></div>
+
+    </div>
+  </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>

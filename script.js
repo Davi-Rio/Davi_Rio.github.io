@@ -10,9 +10,9 @@ const observer = new IntersectionObserver(
   },
   { threshold: 0.15 }
 );
-const architectureDiagram = document.getElementById('architectureDiagram');
 
 reveals.forEach(el => observer.observe(el));
+
 
 const heroVisual = document.querySelector('.hero-visual');
 
@@ -56,66 +56,64 @@ if (heroVisual) {
   });
 }
 
-
 const modalOverlay = document.getElementById('projectModal');
 const modalTitle = modalOverlay.querySelector('.modal-title');
 const modalImage = modalOverlay.querySelector('.modal-image img');
 const modalDescription = modalOverlay.querySelector('.modal-description');
 const modalClose = modalOverlay.querySelector('.modal-close');
+
 const miniDashboard = document.querySelector('.mini-dashboard');
+const architectureDiagram = document.getElementById('architectureDiagram');
+const backendDiagram = document.getElementById('backendDiagram');
 
 const projectData = {
   industrial: {
     title: 'Plataforma de Automação Industrial',
-    image: 'Arquitetura_Front.png',
     description:
       'Arquitetura baseada em frontend web, APIs em Node/NestJS e comunicação com equipamentos embarcados via MQTT.'
   },
   cloud: {
     title: 'Backend de APIs em Cloud',
-    image: 'Arquitetura_back.png',
     description:
       'APIs escaláveis com autenticação, logs, banco PostgreSQL e deploy em cloud.'
   },
   dashboard: {
     title: 'Dashboards Web',
-    image: '',
     description:
       'Dashboards interativos focados em visualização de dados e relatórios analíticos.'
   }
 };
+
+function resetModalContent() {
+  modalImage.style.display = 'none';
+  architectureDiagram.style.display = 'none';
+  backendDiagram.style.display = 'none';
+  miniDashboard.style.display = 'none';
+  stopAllArchitectureLoops();
+}
 
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('click', () => {
     const key = card.dataset.project;
     const data = projectData[key];
     if (!data) return;
+
     modalTitle.textContent = data.title;
     modalDescription.textContent = data.description;
-    modalImage.style.display = 'none';
-    miniDashboard.style.display = 'none';
-    const architectureDiagram = document.getElementById('architectureDiagram');
-    
-    if (architectureDiagram) {
-      architectureDiagram.style.display = 'none';
-    }
+
+    resetModalContent();
 
     if (key === 'industrial') {
-      if (architectureDiagram) {
-        architectureDiagram.style.display = 'block';
-        architectureLoopRunning = false;
-        setTimeout(() => {
-          startArchitectureLoop();
-        }, 200);
-      }
-    }
+      architectureDiagram.style.display = 'block';
+      setTimeout(startArchitectureLoop, 200);
+    } 
+    else if (key === 'cloud') {
+      backendDiagram.style.display = 'block';
+      setTimeout(startBackendLoop, 200);
+    } 
     else if (key === 'dashboard') {
       miniDashboard.style.display = 'block';
       updateDashboard(30);
-    }
-    else {
-      modalImage.style.display = 'block';
-      modalImage.src = data.image;
     }
 
     modalOverlay.classList.add('active');
@@ -124,26 +122,22 @@ document.querySelectorAll('.project-card').forEach(card => {
 
 modalClose.addEventListener('click', () => {
   modalOverlay.classList.remove('active');
-  architectureLoopRunning = false;
-  clearArchitectureState();
+  stopAllArchitectureLoops();
 });
-
 
 modalOverlay.addEventListener('click', e => {
   if (e.target === modalOverlay) {
     modalOverlay.classList.remove('active');
-    architectureLoopRunning = false;
-    clearArchitectureState();
+    stopAllArchitectureLoops();
   }
 });
-
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     modalOverlay.classList.remove('active');
+    stopAllArchitectureLoops();
   }
 });
-
 
 const canvas = document.getElementById('dashboardChart');
 const ctx = canvas.getContext('2d');
@@ -211,7 +205,6 @@ const dashboardData = {
 
 let chartPoints = [];
 let currentLabels = [];
-
 
 function drawChart(points) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -287,21 +280,14 @@ canvas.addEventListener('mousemove', e => {
     ctx.fillStyle = '#9ecbff';
     ctx.fill();
 
-    const modalRect = modalOverlay.getBoundingClientRect();
-    const OFFSET_X = 10;   
-    const OFFSET_Y = -60;   
-
-    tooltip.style.left = `${mx + OFFSET_X}px`;
-    tooltip.style.top = `${my - OFFSET_Y}px`;
-
-
+    tooltip.style.left = `${mx + 10}px`;
+    tooltip.style.top = `${my - -70}px`;
     tooltip.innerHTML = `
       <strong>${found.label}</strong><br>
       Vendas: R$ ${found.sales.toLocaleString()}<br>
       Usuários: ${found.users}
     `;
     tooltip.style.opacity = '1';
-    tooltip.style.transform = 'translateY(0)';
   } else {
     tooltip.style.opacity = '0';
   }
@@ -310,7 +296,6 @@ canvas.addEventListener('mousemove', e => {
 canvas.addEventListener('mouseleave', () => {
   tooltip.style.opacity = '0';
 });
-
 
 function updateDashboard(period) {
   const data = dashboardData[period];
@@ -334,87 +319,15 @@ document.querySelectorAll('.dashboard-filters button').forEach(btn => {
   });
 });
 
+
 const architectureStages = [
   [ { from: 'frontend', to: 'api' } ],
-
   [
     { from: 'api', to: 'db' },
     { from: 'api', to: 'mqtt' }
   ],
-
   [ { from: 'mqtt', to: 'embedded' } ]
 ];
-
-
-function clearArchitectureState() {
-  document
-    .querySelectorAll('.arch-node')
-    .forEach(n => n.classList.remove('active-node'));
-
-  document
-    .querySelectorAll('.flow')
-    .forEach(f => f.classList.remove('active-flow'));
-}
-
-function pulseLink(from, to) {
-  const fromNode = document.querySelector(`[data-node="${from}"]`);
-  const toNode   = document.querySelector(`[data-node="${to}"]`);
-
-  if (!fromNode || !toNode) return;
-
-  fromNode.classList.add('active-node');
-  toNode.classList.add('active-node');
-
-  document.querySelectorAll('.flow').forEach(flow => {
-    if (
-      flow.dataset.from === from &&
-      flow.dataset.to === to
-    ) {
-      flow.classList.add('active-flow');
-    }
-  });
-}
-
-async function runArchitectureOnce() {
-  clearArchitectureState();
-
-  for (const stage of architectureStages) {
-    clearArchitectureState();
-
-    stage.forEach(link => {
-      pulseLink(link.from, link.to);
-    });
-
-    await new Promise(res => setTimeout(res, 900));
-  }
-
-  clearArchitectureState();
-}
-
-let architectureLoopRunning = false;
-
-async function startArchitectureLoop() {
-  if (architectureLoopRunning) return;
-  architectureLoopRunning = true;
-
-  while (architectureLoopRunning) {
-    await runArchitectureOnce();
-    await new Promise(res => setTimeout(res, 5000));
-  }
-}
-
-document.querySelectorAll('.arch-node').forEach(node => {
-  node.addEventListener('click', () => {
-    architectureLoopRunning = false; 
-    setTimeout(() => {
-      startArchitectureLoop();    
-    }, 100);
-  });
-});
-
-const archTooltip = document.getElementById('archTooltip');
-const ARCH_STEP_DURATION = 5500;
-const ARCH_LOOP_DELAY    = 5000;
 
 const archMessages = {
   frontend: 'Usuário interage com a aplicação Angular.',
@@ -424,43 +337,206 @@ const archMessages = {
   embedded: 'Equipamentos embarcados executam ações.'
 };
 
+let architectureLoopRunning = false;
+
+function clearArchitectureState() {
+  document.querySelectorAll('.arch-node').forEach(n => n.classList.remove('active-node'));
+  document.querySelectorAll('.flow').forEach(f => f.classList.remove('active-flow'));
+}
+
+function pulseLink(from, to) {
+  const fromNode = document.querySelector(`[data-node="${from}"]`);
+  const toNode = document.querySelector(`[data-node="${to}"]`);
+  if (!fromNode || !toNode) return;
+
+  fromNode.classList.add('active-node');
+  toNode.classList.add('active-node');
+
+  document.querySelectorAll('.flow').forEach(flow => {
+    if (flow.dataset.from === from && flow.dataset.to === to) {
+      flow.classList.add('active-flow');
+    }
+  });
+}
+
+const archTooltip = document.getElementById('archTooltip');
+
 function showArchTooltip(nodeKey) {
   const node = document.querySelector(`[data-node="${nodeKey}"]`);
-  if (!node) return;
+  if (!node || !archTooltip) return;
 
-  const rect = node.getBoundingClientRect();
-  const parentRect = architectureDiagram.getBoundingClientRect();
+  archTooltip.innerHTML = `
+    <div class="tooltip-title">${nodeKey.toUpperCase()}</div>
+    <div class="tooltip-text">${archMessages[nodeKey]}</div>
+  `;
 
-  archTooltip.innerHTML = `<strong>${nodeKey.toUpperCase()}</strong><br>${archMessages[nodeKey]}`;
-  archTooltip.style.left = `${rect.left - parentRect.left + rect.width / 2}px`;
-  archTooltip.style.top  = `${rect.top - parentRect.top - 12}px`;
+  const nodeRect = node.getBoundingClientRect();
+  const modalRect = document.querySelector('.project-modal').getBoundingClientRect();
+
+  let left =
+    nodeRect.left - modalRect.left + nodeRect.width / 2 - archTooltip.offsetWidth / 2 - 35;
+
+  let top =
+    nodeRect.top - modalRect.top - archTooltip.offsetHeight - 12 - 35;
+
+  left = Math.max(16, Math.min(left, modalRect.width - archTooltip.offsetWidth - 16));
+
+  archTooltip.style.left = `${left}px`;
+  archTooltip.style.top = `${top}px`;
   archTooltip.style.opacity = '1';
-  archTooltip.style.transform = 'translateY(0)';
 }
 
 function hideArchTooltip() {
+  if (!archTooltip) return;
   archTooltip.style.opacity = '0';
+  archTooltip.innerHTML = '';
 }
 
-async function playArchitectureFlowLoop() {
+async function runArchitectureOnce() {
+  for (const stage of architectureStages) {
+    clearArchitectureState();
+    stage.forEach(link => pulseLink(link.from, link.to));
+    showArchTooltip(stage[0].from);
+    await new Promise(r => setTimeout(r, 1800));
+  }
+  hideArchTooltip();
+  clearArchitectureState();
+}
+
+async function startArchitectureLoop() {
   if (architectureLoopRunning) return;
   architectureLoopRunning = true;
 
   while (architectureLoopRunning) {
-    for (const stage of architectureStages) {
-      clearArchitectureState();
-
-      stage.forEach(link => {
-        pulseLink(link.from, link.to);
-        showArchTooltip(link.from);
-      });
-
-      await new Promise(r => setTimeout(r, ARCH_STEP_DURATION));
-    }
-
-    hideArchTooltip();
-    clearArchitectureState();
-
-    await new Promise(r => setTimeout(r, ARCH_LOOP_DELAY));
+    await runArchitectureOnce();
+    await new Promise(r => setTimeout(r, 5000));
   }
+}
+
+const backendStages = [
+  [ { from: 'auth', to: 'api' } ],
+  [
+    { from: 'api', to: 'db' },
+    { from: 'api', to: 'deploy' }
+  ],
+  [ { from: 'db', to: 'logs' } ]
+];
+
+const backendMessages = {
+  auth: 'Autenticação e validação de segurança.',
+  api: 'Processamento da requisição nas APIs.',
+  db: 'Persistência e leitura no PostgreSQL.',
+  deploy: 'Aplicação executando em ambiente cloud.',
+  logs: 'Coleta de métricas e monitoramento.'
+};
+
+let backendLoopRunning = false;
+
+function clearBackendState() {
+  document.querySelectorAll('#backendDiagram .arch-node').forEach(n => n.classList.remove('active-node'));
+  document.querySelectorAll('#backendDiagram .flow').forEach(f => f.classList.remove('active-flow'));
+}
+
+function pulseBackendLink(from, to) {
+  const fromNode = document.querySelector(`#backendDiagram [data-node="${from}"]`);
+  const toNode = document.querySelector(`#backendDiagram [data-node="${to}"]`);
+  if (!fromNode || !toNode) return;
+
+  fromNode.classList.add('active-node');
+  toNode.classList.add('active-node');
+
+  document.querySelectorAll('#backendDiagram .flow').forEach(flow => {
+    if (flow.dataset.from === from && flow.dataset.to === to) {
+      flow.classList.add('active-flow');
+    }
+  });
+}
+
+const backendTooltip = document.getElementById('backendArchTooltip');
+
+function showBackendTooltip(nodeKey) {
+  const tooltip = document.getElementById('backendArchTooltip');
+  const node = document.querySelector(
+    `#backendDiagram [data-node="${nodeKey}"]`
+  );
+  if (!node || !tooltip) return;
+
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${nodeKey.toUpperCase()}</div>
+    <div class="tooltip-text">${backendMessages[nodeKey]}</div>
+  `;
+
+  tooltip.style.opacity = '0';
+  tooltip.style.left = '0px';
+  tooltip.style.top = '0px';
+  tooltip.style.transform = 'none';
+
+  const nodeRect = node.getBoundingClientRect();
+  const parentRect = backendDiagram.getBoundingClientRect();
+  const tooltipRect = tooltip.getBoundingClientRect();
+
+  const OFFSET_X = 0;
+  const OFFSET_Y = 0;
+
+  let left =
+    nodeRect.left -
+    parentRect.left +
+    nodeRect.width / 2 -
+    tooltipRect.width / 2 +
+    OFFSET_X;
+
+  let top =
+    nodeRect.top -
+    parentRect.top -
+    tooltipRect.height -
+    12 +
+    OFFSET_Y;
+
+  const MIN_LEFT = 16;
+  const MAX_LEFT = parentRect.width - tooltipRect.width - 16;
+
+  left = Math.max(MIN_LEFT, Math.min(left, MAX_LEFT));
+
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${top}px`;
+  tooltip.style.opacity = '1';
+}
+
+
+function hideBackendTooltip() {
+  if (!backendTooltip) return;
+  backendTooltip.style.opacity = '0';
+  backendTooltip.innerHTML = '';
+}
+
+async function runBackendOnce() {
+  for (const stage of backendStages) {
+    clearBackendState();
+    stage.forEach(link => pulseBackendLink(link.from, link.to));
+    showBackendTooltip(stage[0].from);
+    await new Promise(r => setTimeout(r, 1800));
+  }
+  hideBackendTooltip();
+  clearBackendState();
+}
+
+async function startBackendLoop() {
+  if (backendLoopRunning) return;
+  backendLoopRunning = true;
+
+  while (backendLoopRunning) {
+    await runBackendOnce();
+    await new Promise(r => setTimeout(r, 5000));
+  }
+}
+
+function stopAllArchitectureLoops() {
+  architectureLoopRunning = false;
+  backendLoopRunning = false;
+
+  clearArchitectureState();
+  clearBackendState();
+
+  hideArchTooltip();
+  hideBackendTooltip();
 }
