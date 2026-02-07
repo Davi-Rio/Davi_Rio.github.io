@@ -995,3 +995,46 @@ body.scrolled .scroll-indicator {
   color: #555;
 }
 
+.lang-switch {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.lang-flag {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+}
+
+.lang-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lang-flag:hover {
+  transform: scale(1.08);
+  border-color: #58a6ff;
+}
+
+.lang-flag.active {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.25);
+}
+
+.lang-separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  user-select: none;
+}

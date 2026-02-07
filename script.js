@@ -945,13 +945,14 @@ function setLanguage(lang) {
   localStorage.setItem("portfolioLang", lang);
 
   document
-    .querySelectorAll(".lang-switch button")
+    .querySelectorAll(".lang-flag")
     .forEach(btn => btn.classList.remove("active"));
 
   document
-    .querySelector(`.lang-switch button[data-lang="${lang}"]`)
+    .querySelector(`.lang-flag[data-lang="${lang}"]`)
     ?.classList.add("active");
-}
+
+  }
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("portfolioLang") || "pt";
