@@ -958,3 +958,40 @@ body.scrolled .scroll-indicator {
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
+
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.lang-switch button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.lang-switch button:hover {
+  color: #fff;
+}
+
+.lang-switch button.active {
+  color: #58a6ff;
+}
+
+.lang-switch span {
+  color: #555;
+}
+

@@ -22,10 +22,16 @@
 
 <body>
 
+  <div class="lang-switch">
+    <button data-lang="pt" class="active">PT</button>
+    <span>|</span>
+    <button data-lang="en">EN</button>
+  </div>
+
   <section class="hero">
 
     <div class="hero-text">
-      <span class="hero-badge">
+      <span class="hero-badge" data-i18n="hero.badge">
         <i class="fas fa-code"></i>
         Desenvolvedor & Estudante De Engenharia Automação
       </span>
@@ -33,8 +39,12 @@
       <h1>Davi <span>Rio</span></h1>
 
       <p class="hero-subtitle">
-        Estudante de Engenharia de Controle e Automação<br />
-        <strong>Full Stack · Cloud · Sistemas Integrados</strong>
+        <span data-i18n="hero.subtitle">
+          Estudante de Engenharia de Controle e Automação
+        </span><br />
+        <strong data-i18n="hero.stack">
+          Full Stack · Cloud · Sistemas Integrados
+        </strong>
       </p>
 
       <div class="hero-buttons">
@@ -65,97 +75,95 @@
     </div>
 
     <div class="scroll-indicator">
-      <span class="scroll-text">Role para ver mais</span>
+      <span class="scroll-text" data-i18n="scroll.more">
+        Role para ver mais
+      </span>
       <button class="scroll-arrow" aria-label="Descer">
         <i class="fas fa-chevron-down"></i>
       </button>
     </div>
 
-
   </section>
 
   <section class="section reveal about">
-    <h3>Sobre mim</h3>
+    <h3 data-i18n="about.title">Sobre mim</h3>
 
     <div class="about-layout">
 
       <div class="about-card about-card-main">
-        <p class="about-intro">
+        <p class="about-intro" data-i18n="about.p1">
           Sou estudante de Engenharia de Controle e Automação e desenvolvedor com
           foco em construir sistemas que funcionam de ponta a ponta.
         </p>
 
-        <p class="about-text">
+        <p class="about-text" data-i18n="about.p2">
           Atuo no desenvolvimento de soluções completas, envolvendo
-          <strong>frontend</strong>, <strong>backend</strong> e
-          <strong>cloud computing</strong>, além da integração com
-          <strong>equipamentos embarcados</strong> e automação industrial.
+          frontend, backend e cloud computing, além da integração com
+          equipamentos embarcados e automação industrial.
         </p>
 
-        <p class="about-text">
+        <p class="about-text" data-i18n="about.p3">
           Tenho interesse em arquitetura de software, integração de sistemas e
           escalabilidade, sempre buscando escrever código claro, organizado e
           fácil de evoluir.
         </p>
       </div>
 
-    <div class="about-highlights about-highlights-bottom">
+      <div class="about-highlights about-highlights-bottom">
+        <div class="highlight-card">
+          <i class="fas fa-desktop"></i>
+            <strong data-i18n="cards.frontend.title"></strong>
+            <span data-i18n="cards.frontend.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-desktop"></i>
-        <strong>Frontend</strong>
-        <span>UI · UX · Performance</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-server"></i>
+            <strong data-i18n="cards.backend.title"></strong>
+            <span data-i18n="cards.backend.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-server"></i>
-        <strong>Backend</strong>
-        <span>APIs · Regras · Segurança</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-layer-group"></i>
+            <strong data-i18n="cards.fullstack.title"></strong>
+            <span data-i18n="cards.fullstack.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-layer-group"></i>
-        <strong>Full Stack</strong>
-        <span>Frontend · Backend · Cloud</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-plug"></i>
+            <strong data-i18n="cards.integration.title"></strong>
+            <span data-i18n="cards.integration.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-plug"></i>
-        <strong>Integração</strong>
-        <span>Web · APIs · Embarcados</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-diagram-project"></i>
+            <strong data-i18n="cards.architecture.title"></strong>
+            <span data-i18n="cards.architecture.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-diagram-project"></i>
-        <strong>Arquitetura</strong>
-        <span>Sistemas escaláveis</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-check-circle"></i>
+            <strong data-i18n="cards.quality.title"></strong>
+            <span data-i18n="cards.quality.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-check-circle"></i>
-        <strong>Qualidade</strong>
-        <span>Código limpo e confiável</span>
-      </div>
+        <div class="highlight-card">
+          <i class="fas fa-comments"></i>
+            <strong data-i18n="cards.communication.title"></strong>
+            <span data-i18n="cards.communication.desc"></span>
+        </div>
 
-      <div class="highlight-card">
-        <i class="fas fa-comments"></i>
-        <strong>Comunicação</strong>
-        <span>Clareza técnica</span>
-      </div>
-
-      <div class="highlight-card">
-        <i class="fas fa-brain"></i>
-        <strong>Aprendizado</strong>
-        <span>Evolução constante</span>
+        <div class="highlight-card">
+          <i class="fas fa-brain"></i>
+            <strong data-i18n="cards.learning.title"></strong>
+            <span data-i18n="cards.learning.desc"></span>
+        </div>
       </div>
 
     </div>
-
-  </div>
-</section>
+  </section>
 
   <section class="section reveal">
-    <h3>Tecnologias</h3>
+    <h3 data-i18n="tech.title">Tecnologias</h3>
 
     <div class="tech-grid">
       <div class="tech-card">
@@ -191,7 +199,7 @@
   </section>
 
   <section class="section reveal">
-    <h3>Linguagens</h3>
+    <h3 data-i18n="lang.title">Linguagens</h3>
 
     <div class="tech-grid">
       <div class="tech-card">
@@ -237,20 +245,24 @@
   </section>
 
   <section class="section reveal career-timeline">
-    <h3>Experiência Profissional</h3>
+    <h3 data-i18n="career.title">Experiência Profissional</h3>
 
     <div class="timeline-wrapper">
 
       <div class="timeline-card active">
         <div class="timeline-content">
-          <span class="timeline-step">Início de Carreira</span>
+          <span class="timeline-step" data-i18n="career.step.start">
+            Início de Carreira
+          </span>
 
           <h4>
             Universidade de Pernambuco<br>
-            <small>Engenharia de Controle e Automação</small>
+            <small data-i18n="career.uepe.role">
+              Engenharia de Controle e Automação
+            </small>
           </h4>
 
-          <p>
+          <p data-i18n="career.uepe.desc">
             Formação acadêmica com foco em sistemas de controle, automação industrial,
             programação e integração entre software e hardware, criando a base técnica
             para atuação em sistemas complexos.
@@ -261,25 +273,29 @@
           </div>
         </div>
 
-        <button class="timeline-prev" aria-label="Anterior">
+        <button class="timeline-prev" aria-label="Previous">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <button class="timeline-next" aria-label="Próximo">
+        <button class="timeline-next" aria-label="Next">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
 
       <div class="timeline-card">
         <div class="timeline-content">
-          <span class="timeline-step">Primeiro Projeto de Extensão</span>
+          <span class="timeline-step" data-i18n="career.step.extension">
+            Primeiro Projeto de Extensão
+          </span>
 
           <h4>
             In-Forma (PET Mobile)<br>
-            <small>Projeto de Extensão Acadêmica · 2019 – 2020</small>
+            <small data-i18n="career.informa.role">
+              Projeto de Extensão Acadêmica · 2019 – 2020
+            </small>
           </h4>
 
-          <p>
+          <p data-i18n="career.informa.desc">
             Primeiro contato prático com desenvolvimento de software, atuando na criação
             de aplicações mobile interativas. Experiência com frontend e backend em
             ambiente acadêmico, consolidando fundamentos de programação e lógica de sistemas.
@@ -290,25 +306,29 @@
           </div>
         </div>
 
-        <button class="timeline-prev" aria-label="Anterior">
+        <button class="timeline-prev" aria-label="Previous">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <button class="timeline-next" aria-label="Próximo">
+        <button class="timeline-next" aria-label="Next">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
 
       <div class="timeline-card">
         <div class="timeline-content">
-          <span class="timeline-step">Experiência Industrial</span>
+          <span class="timeline-step" data-i18n="career.step.industry">
+            Experiência Industrial
+          </span>
 
           <h4>
             Usiman<br>
-            <small>Estágio Industrial · Jan/2023 – Dez/2024</small>
+            <small data-i18n="career.usiman.role">
+              Estágio Industrial · Jan/2023 – Dez/2024
+            </small>
           </h4>
 
-          <p>
+          <p data-i18n="career.usiman.desc">
             Atuação em projetos de retrofit industrial, com apoio à projeção e adequação
             de peças técnicas, além de suporte à manutenção de máquinas e equipamentos
             industriais em ambiente produtivo.
@@ -319,25 +339,29 @@
           </div>
         </div>
 
-        <button class="timeline-prev" aria-label="Anterior">
+        <button class="timeline-prev" aria-label="Previous">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <button class="timeline-next" aria-label="Próximo">
+        <button class="timeline-next" aria-label="Next">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
 
       <div class="timeline-card">
         <div class="timeline-content">
-          <span class="timeline-step">Engenharia & IoT</span>
+          <span class="timeline-step" data-i18n="career.step.iot">
+            Engenharia & IoT
+          </span>
 
           <h4>
             Capricche<br>
-            <small>Estágio em Projetos e Engenharia · Jan/2025 – Jun/2025</small>
+            <small data-i18n="career.capricche.role">
+              Estágio em Projetos e Engenharia · Jan/2025 – Jun/2025
+            </small>
           </h4>
 
-          <p>
+          <p data-i18n="career.capricche.desc">
             Apoio ao desenvolvimento de projetos de engenharia, com participação em
             soluções IoT aplicadas a processos produtivos, análise técnica e suporte
             à melhoria contínua da qualidade de produtos.
@@ -348,25 +372,29 @@
           </div>
         </div>
 
-        <button class="timeline-prev" aria-label="Anterior">
+        <button class="timeline-prev" aria-label="Previous">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <button class="timeline-next" aria-label="Próximo">
+        <button class="timeline-next" aria-label="Next">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
 
       <div class="timeline-card">
         <div class="timeline-content">
-          <span class="timeline-step">Atuação Profissional</span>
+          <span class="timeline-step" data-i18n="career.step.current">
+            Atuação Profissional
+          </span>
 
           <h4>
             TRON Soluções Tecnológicas<br>
-            <small>Analista de Sistemas de Automação · Jul/2025 – Atual</small>
+            <small data-i18n="career.tron.role">
+              Analista de Sistemas de Automação · Jul/2025 – Atual
+            </small>
           </h4>
 
-          <p>
+          <p data-i18n="career.tron.desc">
             Desenvolvimento e manutenção de sistemas de automação integrados a software,
             criação de APIs e serviços backend com Node.js e NestJS, integração entre
             sistemas industriais, aplicações web e plataformas em nuvem, além de
@@ -378,11 +406,11 @@
           </div>
         </div>
 
-        <button class="timeline-prev" aria-label="Anterior">
+        <button class="timeline-prev" aria-label="Previous">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <button class="timeline-next" aria-label="Próximo">
+        <button class="timeline-next" aria-label="Next">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
@@ -390,98 +418,124 @@
     </div>
   </section>
 
-
   <section class="section reveal">
-    <h3>Soluções Desenvolvidas</h3>
+    <h3 data-i18n="projects.title">Soluções Desenvolvidas</h3>
 
-    <div class="projects">
+      <div class="projects">
 
-      <div class="project-card" data-project="industrial">
-        <div class="project-icon">
-          <i class="fas fa-industry"></i>
+        <div class="project-card" data-project="industrial">
+          <div class="project-icon">
+            <i class="fas fa-industry"></i>
+          </div>
+
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+
+          <h4 data-i18n="projects.industrial.title">
+            Plataforma de Automação Industrial
+          </h4>
+
+          <p data-i18n="projects.industrial.desc">
+            Sistema web integrado a equipamentos embarcados.
+          </p>
+
+          <div class="project-tags">
+            <span>Angular</span>
+            <span>Node.js</span>
+            <span>MQTT</span>
+          </div>
         </div>
 
-        <span class="project-expand">
-          <i class="fas fa-arrow-up-right-from-square"></i>
-        </span>
+        <div class="project-card" data-project="cloud">
+          <div class="project-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
 
-        <h4>Plataforma de Automação Industrial</h4>
-        <p>Sistema web integrado a equipamentos embarcados.</p>
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
 
-        <div class="project-tags">
-          <span>Angular</span>
-          <span>Node.js</span>
-          <span>MQTT</span>
+          <h4 data-i18n="projects.cloud.title">
+            Backend de APIs em Cloud
+          </h4>
+
+          <p data-i18n="projects.cloud.desc">
+            APIs escaláveis com autenticação e logs.
+          </p>
+
+          <div class="project-tags">
+            <span>NestJS</span>
+            <span>PostgreSQL</span>
+            <span>Cloud</span>
+          </div>
         </div>
+
+        <div class="project-card" data-project="dashboard">
+          <div class="project-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+
+          <span class="project-expand">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+
+          <h4 data-i18n="projects.dashboard.title">
+            Dashboards Web
+          </h4>
+
+          <p data-i18n="projects.dashboard.desc">
+            Visualização de dados e relatórios analíticos.
+          </p>
+
+          <div class="project-tags">
+            <span>Frontend</span>
+            <span>Charts</span>
+            <span>UX</span>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="project-card" data-project="cloud">
-        <div class="project-icon">
-          <i class="fas fa-cloud"></i>
-        </div>
+    <section class="section contact reveal">
+      <h3 data-i18n="contact.title">Contato</h3>
 
-        <span class="project-expand">
-          <i class="fas fa-arrow-up-right-from-square"></i>
-        </span>
+      <p>
+        <span data-i18n="contact.email">Email</span>:
+        <strong>Davi.pereira.rio@gmail.com</strong>
+      </p>
 
-        <h4>Backend de APIs em Cloud</h4>
-        <p>APIs escaláveis com autenticação e logs.</p>
+      <p>
+        <span data-i18n="contact.phone">Celular</span>:
+        <strong>(81) 97903-2929</strong>
+      </p>
+    </section>
 
-        <div class="project-tags">
-          <span>NestJS</span>
-          <span>PostgreSQL</span>
-          <span>Cloud</span>
-        </div>
-      </div>
-
-      <div class="project-card" data-project="dashboard">
-        <div class="project-icon">
-          <i class="fas fa-chart-line"></i>
-        </div>
-
-        <span class="project-expand">
-          <i class="fas fa-arrow-up-right-from-square"></i>
-        </span>
-
-        <h4>Dashboards Web</h4>
-        <p>Visualização de dados e relatórios analíticos.</p>
-
-        <div class="project-tags">
-          <span>Frontend</span>
-          <span>Charts</span>
-          <span>UX</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
+    <footer>
+      © 2026 — <span data-i18n="footer.name">Davi Rio</span>
+    </footer>
 
 
-  <section class="section contact reveal">
-    <h3>Contato</h3>
-
-    <p>
-      Email:
-      <strong>Davi.pereira.rio@gmail.com</strong>
-    </p>
-
-    <p>
-      Celular:
-      <strong>(81) 97903-2929</strong>
-    </p>
-  </section>
-
-  <footer>© 2026 — Davi Rio</footer>
-
-  <div class="project-modal-overlay" id="projectModal">
+    <div class="project-modal-overlay" id="projectModal">
     <div class="project-modal">
 
-      <button class="modal-close" aria-label="Fechar">&times;</button>
+      <button
+        class="modal-close"
+        aria-label="Close"
+        data-i18n="modal.close"
+      >
+        &times;
+      </button>
 
       <h3 class="modal-title"></h3>
 
       <div class="modal-image">
-        <img src="" alt="Arquitetura do projeto">
+        <img
+          src=""
+          alt=""
+          data-i18n-alt="modal.image.alt"
+        />
       </div>
 
       <div
@@ -494,7 +548,7 @@
           <div class="arch-node frontend" data-node="frontend">
             <i class="fab fa-angular"></i>
             <span>
-              Frontend Web<br>
+              <span data-i18n="modal.node.frontend">Frontend Web</span><br>
               <small>Angular / TypeScript</small>
             </span>
           </div>
@@ -502,7 +556,7 @@
           <div class="arch-node api" data-node="api">
             <i class="fab fa-node-js"></i>
             <span>
-              APIs<br>
+              <span data-i18n="modal.node.api">APIs</span><br>
               <small>Node.js / NestJS</small>
             </span>
           </div>
@@ -511,7 +565,7 @@
             <i class="fas fa-wifi"></i>
             <span>
               MQTT<br>
-              <small>Mensageria</small>
+              <small data-i18n="modal.node.mqtt">Messaging</small>
             </span>
           </div>
 
@@ -519,52 +573,25 @@
             <i class="fas fa-database"></i>
             <span>
               PostgreSQL<br>
-              <small>Banco de Dados</small>
+              <small data-i18n="modal.node.database">Database</small>
             </span>
           </div>
 
           <div class="arch-node embedded" data-node="embedded">
             <i class="fas fa-microchip"></i>
             <span>
-              Equipamentos<br>
-              <small>Embarcados</small>
+              <span data-i18n="modal.node.embedded">Equipment</span><br>
+              <small data-i18n="modal.node.embedded.sub">Embedded Systems</small>
             </span>
           </div>
 
         </div>
 
-        <svg
-          class="arch-lines"
-          viewBox="0 0 600 360"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M145 165 L225 165"
-            class="flow blue"
-            data-from="frontend"
-            data-to="api"
-          />
-
-          <path
-            d="M300 210 L300 255"
-            class="flow green"
-            data-from="api"
-            data-to="db"
-          />
-
-          <path
-            d="M375 165 L455 165"
-            class="flow yellow"
-            data-from="api"
-            data-to="mqtt"
-          />
-
-          <path
-            d="M530 210 L530 255"
-            class="flow yellow"
-            data-from="mqtt"
-            data-to="embedded"
-          />
+        <svg class="arch-lines" viewBox="0 0 600 360" preserveAspectRatio="none">
+          <path d="M145 165 L225 165" class="flow blue" />
+          <path d="M300 210 L300 255" class="flow green" />
+          <path d="M375 165 L455 165" class="flow yellow" />
+          <path d="M530 210 L530 255" class="flow yellow" />
         </svg>
 
         <div class="arch-tooltip" id="archTooltip"></div>
@@ -580,7 +607,7 @@
           <div class="arch-node auth" data-node="auth">
             <i class="fas fa-shield-alt"></i>
             <span>
-              Autenticação<br>
+              <span data-i18n="modal.node.auth">Authentication</span><br>
               <small>JWT / OAuth2</small>
             </span>
           </div>
@@ -588,7 +615,7 @@
           <div class="arch-node api" data-node="api">
             <i class="fab fa-node-js"></i>
             <span>
-              APIs Escaláveis<br>
+              <span data-i18n="modal.node.scalableApis">Scalable APIs</span><br>
               <small>NestJS / Node.js</small>
             </span>
           </div>
@@ -596,7 +623,7 @@
           <div class="arch-node deploy" data-node="deploy">
             <i class="fab fa-docker"></i>
             <span>
-              Deploy na Cloud<br>
+              <span data-i18n="modal.node.deploy">Cloud Deploy</span><br>
               <small>Docker / Google Cloud</small>
             </span>
           </div>
@@ -604,7 +631,7 @@
           <div class="arch-node db" data-node="db">
             <i class="fas fa-database"></i>
             <span>
-              Banco de Dados<br>
+              <span data-i18n="modal.node.database">Database</span><br>
               <small>PostgreSQL</small>
             </span>
           </div>
@@ -612,48 +639,24 @@
           <div class="arch-node logs" data-node="logs">
             <i class="fas fa-chart-line"></i>
             <span>
-              Logs & Monitoramento<br>
+              <span data-i18n="modal.node.logs">Logs & Monitoring</span><br>
               <small>Winston / Elastic</small>
             </span>
           </div>
 
         </div>
 
-        <div id="backendArchTooltip" class="arch-tooltip backend-tooltip"></div>
-
-        <svg
-          class="arch-lines"
-          viewBox="0 0 720 380"
-          preserveAspectRatio="none"
-        >
-          <path
-            class="flow blue"
-            data-from="auth"
-            data-to="api"
-            d="M175 160 L270 160"
-          />
-
-          <path
-            class="flow green"
-            data-from="api"
-            data-to="db"
-            d="M360 270 L360 230"
-          />
-
-          <path
-            class="flow yellow"
-            data-from="api"
-            data-to="deploy"
-            d="M450 160 L545 160"
-          />
-
-          <path
-            class="flow purple"
-            data-from="db"
-            data-to="logs"
-            d="M450 330 L545 330"
-          />
+        <svg class="arch-lines" viewBox="0 0 720 380" preserveAspectRatio="none">
+          <path class="flow blue" d="M175 160 L270 160" />
+          <path class="flow green" d="M360 270 L360 230" />
+          <path class="flow yellow" d="M450 160 L545 160" />
+          <path class="flow purple" d="M450 330 L545 330" />
         </svg>
+
+        <div
+          id="backendArchTooltip"
+          class="arch-tooltip backend-tooltip"
+        ></div>
       </div>
 
       <p class="modal-description"></p>
@@ -661,17 +664,17 @@
       <div class="mini-dashboard" style="display:none;">
         <div class="dashboard-kpis">
           <div class="kpi">
-            <span>Vendas:</span>
-            <strong id="kpiSales">R$ 0</strong>
+            <span data-i18n="dashboard.sales">Sales</span>:
+            <strong id="kpiSales">0</strong>
           </div>
 
           <div class="kpi">
-            <span>Usuários:</span>
+            <span data-i18n="dashboard.users">Users</span>:
             <strong id="kpiUsers">0</strong>
           </div>
 
           <div class="kpi">
-            <span>Crescimento:</span>
+            <span data-i18n="dashboard.growth">Growth</span>:
             <strong id="kpiGrowth">0%</strong>
           </div>
         </div>
@@ -679,9 +682,15 @@
         <canvas id="dashboardChart" width="640" height="220"></canvas>
 
         <div class="dashboard-filters">
-          <button data-period="7">7 dias</button>
-          <button data-period="30" class="active">30 dias</button>
-          <button data-period="90">90 dias</button>
+          <button data-period="7" data-i18n="dashboard.days7">7 days</button>
+          <button
+            data-period="30"
+            class="active"
+            data-i18n="dashboard.days30"
+          >
+            30 days
+          </button>
+          <button data-period="90" data-i18n="dashboard.days90">90 days</button>
         </div>
       </div>
 
