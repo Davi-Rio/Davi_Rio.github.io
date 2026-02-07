@@ -69,12 +69,61 @@ body {
   color: var(--primary);
 }
 
-.hero-visual .circle {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--primary), transparent 70%);
-  filter: blur(20px);
+.hero-visual {
+  position: relative;
+  width: 720px;
+  max-width: 100%;
+  will-change: transform;
+}
+
+.hero-illustration {
+  width: 100%;
+  height: auto;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 30px 60px rgba(88, 166, 255, 0.25));
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px); 
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: float 6s ease-in-out infinite;
+}
+
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle,
+    rgba(88, 166, 255, 0.25),
+    transparent 70%
+  );
+  z-index: -1;
+  filter: blur(35px);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 .section {
@@ -166,6 +215,11 @@ footer {
   .hero-visual {
     margin-top: 40px;
   }
+
+  .hero-visual {
+  width: 400px;
+}
+
 }
 
 .about-text {
@@ -306,4 +360,178 @@ section h3 + .tech-grid .tech-card i {
   border-radius: 20px;
   background: rgba(88, 166, 255, 0.15);
   color: var(--primary);
+}
+
+.hero-visual {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+.hero-illustration {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 17, 23, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    backdrop-filter 0.35s ease;
+  z-index: 1000;
+}
+
+.project-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-modal {
+  background: linear-gradient(180deg, var(--card), #0b0f14);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 720px;
+  width: 90%;
+
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-modal-overlay.active .project-modal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.modal-close {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--primary);
+  transform: rotate(90deg) scale(1.1);
+}
+
+
+.modal-image img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.modal-description {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===== Mini Dashboard ===== */
+
+.mini-dashboard {
+  margin-top: 20px;
+}
+
+.dashboard-kpis {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.kpi {
+  flex: 1;
+  background: rgba(88, 166, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.kpi-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.kpi-value {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.dashboard-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.dashboard-filters button {
+  background: none;
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.dashboard-filters button.active,
+.dashboard-filters button:hover {
+  background: var(--primary);
+  color: #000;
+}
+
+.chart-tooltip {
+  position: fixed;
+  background: rgba(22, 27, 34, 0.95);
+  border: 1px solid rgba(88, 166, 255, 0.4);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 2000;
+}
+
+
+.chart-tooltip strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--primary);
+}
+
+#dashboardChart {
+  cursor: pointer;
+}
+
+.project-modal {
+  position: relative;
 }
