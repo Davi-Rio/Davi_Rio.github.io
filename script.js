@@ -596,3 +596,21 @@ prevButtons.forEach(btn => {
 
 showTimelineCard(currentTimelineIndex);
 startAutoPlay();
+
+const scrollArrow = document.querySelector('.scroll-arrow');
+const heroSection = document.querySelector('.hero');
+
+if (scrollArrow && heroSection) {
+  scrollArrow.addEventListener('click', () => {
+    const nextSection = heroSection.nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    document.body.classList.add('scrolled');
+  }
+});
