@@ -5,7 +5,7 @@
 Este repositório contém o código-fonte do meu **portfólio pessoal**, desenvolvido para apresentar minha trajetória acadêmica e profissional, competências técnicas e projetos desenvolvidos na área de **Engenharia de Controle e Automação**, **Desenvolvimento Full Stack** e **Sistemas Integrados**.
 
 🔗 **Acesse o portfólio:**  
-👉 https://davi-rio.github.io
+[https://davi-rio.github.io](https://davi-rio.github.io/Davi_Rio.github.io/)
 
 ---
 
