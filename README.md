@@ -1,3 +1,8 @@
+<p align="right">
+  🇧🇷 <strong>Português</strong> |
+  <a href="README.en.md">🇺🇸 English</a>
+</p>
+
 # Davi Rio — Portfólio Profissional
 
 Portfólio pessoal desenvolvido para apresentar minha trajetória acadêmica e profissional
