@@ -772,10 +772,11 @@ footer {
 
 .timeline-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 40px;
 }
+
 
 .timeline-card {
   position: relative;
@@ -791,11 +792,27 @@ footer {
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.55),
     inset 0 0 0 1px rgba(88, 166, 255, 0.12);
-  opacity: 0;
+  opacity: 0.1;
   transform: translateY(20px);
   pointer-events: none;
   transition: all 0.45s ease;
 }
+
+.timeline-card .timeline-prev,
+.timeline-card .timeline-next {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.timeline-card.active .timeline-prev,
+.timeline-card.active .timeline-next {
+  opacity: 0.6;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
 
 .timeline-card.active {
   opacity: 1;
